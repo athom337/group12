@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Structure to hold customer details
+struct Customer {
+    int accountID;
+    char name[100];
+    long routeNo;
+    char accountType[20];
+    double balance;
+};
