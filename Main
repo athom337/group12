@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#define Max_Customers 10000
 // Structure to hold customer details
 struct Customer {
     int accountID;
@@ -71,4 +71,5 @@ int main() {
 
    
     return 0;
+}
 }
