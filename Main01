@@ -22,7 +22,10 @@ int main() {
     for (int i = 0; i < numCustomers; i++) {
         printf("\nCustomer %d\n", i + 1);
 
-        while(customers[i].accountID <= 10000 || customers[i].accountID >= 99999){
+        do {
+            printf("Enter Account ID (5-digit number): ");
+            scanf("%d", &customers[i].accountID);
+        } while(customers[i].accountID <= 10000 || customers[i].accountID >= 99999){
         printf("Enter Account ID: ");
         scanf("%d", &customers[i].accountID);
         }
