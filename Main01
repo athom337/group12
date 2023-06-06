@@ -44,28 +44,34 @@ int main() {
     }
 
     int searchAccountID;
-    printf("\nEnter Account ID to search: ");
-    scanf("%d", &searchAccountID);
+    char searchAgain;
 
-    // Search for customer record
-    int found = 0;
-    for (int i = 0; i < numCustomers; i++) {
-        if (customers[i].accountID == searchAccountID) {
-            found = 1;
-            printf("\nSearch Status: Customer Found\n");
-            printf("Account ID: %d\n", customers[i].accountID);
-            printf("Name: %s\n", customers[i].name);
-            printf("Route No: %ld\n", customers[i].routeNo);
-            printf("Account Type: %s\n", customers[i].accountType);
-            printf("Balance: %.2lf USD\n", customers[i].balance);
-            break;
+    do {
+        printf("\nEnter Account ID to search: ");
+        scanf("%d", &searchAccountID);
+
+        // Search for customer record
+        int found = 0;
+        for (int i = 0; i < numCustomers; i++) {
+            if (customers[i].accountID == searchAccountID) {
+                found = 1;
+                printf("\nSearch Status: Customer Found\n");
+                printf("Account ID: %d\n", customers[i].accountID);
+                printf("Name: %s\n", customers[i].name);
+                printf("Route No: %ld\n", customers[i].routeNo);
+                printf("Account Type: %s\n", customers[i].accountType);
+                printf("Balance: %.2lf USD\n", customers[i].balance);
+                break;
+            }
         }
-    }
 
-    if (!found) {
-        printf("\nSearch Status: Customer Not Found\n");
-    }
+        if (!found) {
+            printf("\nSearch Status: Customer Not Found\n");
+        }
 
+        printf("\nDo you want to search again? (Y/N): ");
+        scanf(" %c", &searchAgain);
+    } while (searchAgain == 'Y' || searchAgain == 'y');
 
     return 0;
 }
