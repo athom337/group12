@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define Max_Customers 10000
+// Structure to hold customer details
+struct Customer {
+    int accountID;
+    char name[100];
+    long routeNo;
+    char accountType[20];
+    double balance;
+};
+int main() {
+
+    struct Customer customers[Max_Customers];
+    int numCustomers;
+
+    printf("Enter number of customers: ");
+    scanf("%d", &numCustomers);
+
+    // Read customer details
+    for (int i = 0; i < numCustomers; i++) {
+        printf("\nCustomer %d\n", i + 1);
+
+        do {
+            printf("Enter Account ID (5-digit number): ");
+            scanf("%d", &customers[i].accountID);
+        } while(customers[i].accountID <= 10000 || customers[i].accountID >= 99999);
+
+
+        printf("Enter Name: ");
+        scanf(" %[^\n]s", customers[i].name);
+
+        printf("Enter Route No: ");
+        scanf("%ld", &customers[i].routeNo);
+
+        printf("Enter Account Type: ");
+        scanf(" %[^\n]s", customers[i].accountType);
+
+        printf("Enter Balance: ");
+        scanf("%lf", &customers[i].balance);
+    }
+
+    int searchAccountID = 0;
+    char searchAgain;
+
+    do {
+
+        while(searchAccountID<= 10000 || searchAccountID>= 99999){
+        printf("\nEnter Account ID to search (5-digit number): ");
+        scanf("%d", &searchAccountID);
+        }
+
+        // Search for customer record
+        int found = 0;
+        for (int i = 0; i < numCustomers; i++) {
+            if (customers[i].accountID == searchAccountID) {
+                found = 1;
+                printf("\nSearch Status: Customer Found\n");
+                printf("Account ID: %d\n", customers[i].accountID);
+                printf("Name: %s\n", customers[i].name);
+                printf("Route No: %ld\n", customers[i].routeNo);
+                printf("Account Type: %s\n", customers[i].accountType);
+                printf("Balance: %.2lf USD\n", customers[i].balance);
+                break;
+            }
+        }
+
+        if (!found) {
+            printf("\nSearch Status: Customer Not Found\n");
+        }
+
+        printf("\nDo you want to search again? (Y/N): ");
+        scanf(" %c", &searchAgain);
+    } while (searchAgain == 'Y' || searchAgain == 'y');
+
+    return 0;
+}

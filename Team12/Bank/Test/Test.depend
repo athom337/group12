@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1686087216 source:c:\users\enriq\desktop\bank\test\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
